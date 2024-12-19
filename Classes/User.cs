@@ -151,8 +151,6 @@ namespace RegIN_Kurlishuk.Classes
                 NPassword += NewPassword[i];
             //Возвращаем пароль
             return NPassword;  
-
-
         }
     }
 }
