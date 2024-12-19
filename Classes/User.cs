@@ -143,7 +143,7 @@ namespace RegIN_Kurlishuk.Classes
                 NewPassword[RandomSymbol] = NewPassword[i];
                 //Меняем порядковый символ в коллекции на случайные
                 NewPassword[i] = Symbol;
-            }
+            } 
             //Объявляем переменную, которая будет содержать пароль
             string NPassword = ""; 
             //Перебираем коллецию d
