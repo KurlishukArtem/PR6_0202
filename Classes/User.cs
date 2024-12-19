@@ -133,7 +133,7 @@ namespace RegIN_Kurlishuk.Classes
                 NewPassword.Add(ArrUppercase[rnd.Next(0,ArrUppercase.Length)]);
             //перебираем коллекцию
             //тем самым перемешиваем коллекцию символов
-            for (int i = 0; i<NewPassword.Count;i++)
+            for (int i = 0; i<NewPassword.Count;i++) 
             {
                 //выбираем случайный символ
                 int RandomSymbol = rnd.Next(0, NewPassword.Count);
