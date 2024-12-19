@@ -146,11 +146,11 @@ namespace RegIN_Kurlishuk.Classes
             }
             //Объявляем переменную, которая будет содержать пароль
             string NPassword = "";
-            //Перебираем коллецию
+            //Перебираем коллецию d
             for (int i = 0; i < NewPassword.Count;i++)
                 NPassword += NewPassword[i];
             //Возвращаем пароль
-            return NPassword;
+            return NPassword;  
 
 
         }
