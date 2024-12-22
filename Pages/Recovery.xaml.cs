@@ -99,7 +99,7 @@ namespace RegIN_Kurlishuk.Pages
                     // Если возникла ошибка, выводим в дебаг
                     Debug.WriteLine(exp.Message);
                     // Запоминаем введёный логин
-                    oldLogin = TbLogin.Text;
+                    OldLogin = TbLogin.Text;
                     // Вызываем метод создания нового пароля
                     SendNewPassword();
                 };
@@ -169,7 +169,7 @@ namespace RegIN_Kurlishuk.Pages
                 // Вызываем полуение данных пользователя по логину
                 MainWindow.mainWindow.UserLogIn.GetUserLogin(TbLogin.Text);
         }
-        private void setLogin(object sender, RoutedEventArgs e) =>
+        private void SetLogin(object sender, RoutedEventArgs e) =>
         // Вызываем полуение данных пользователя по логину
         MainWindow.mainWindow.UserLogIn.GetUserLogin(TbLogin.Text);
 

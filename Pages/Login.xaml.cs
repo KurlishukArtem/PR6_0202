@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using RegIN_Kurlishuk.Classes;
 using Slack.Webhooks.Elements;
+using Image = System.Windows.Controls.Image;
 
 namespace RegIN_Kurlishuk.Pages
 {
@@ -322,6 +323,6 @@ namespace RegIN_Kurlishuk.Pages
         /// Метод открытия страницы регистрации
         /// </summary>
         private void OpenRegin(object sender, MouseButtonEventArgs e) =>
-        MainWindow.mainWindow.OpenPage(new Regex());
+        MainWindow.mainWindow.OpenPage(new Regin());
     }
 }
