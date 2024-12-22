@@ -71,7 +71,7 @@
                     Foreground="#FF673AB7"
                     FontSize="10"
                     MouseDown="OpenLogin"/>
-</Grid>
+                </Grid>
         </materialDesign:Card>
     </Grid>
 </Page>
