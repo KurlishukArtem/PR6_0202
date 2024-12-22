@@ -102,13 +102,7 @@ namespace RegIN_Kurlishuk.Pages
         /// <summary>
         /// Вызыв метода проверки отправленного кода на почту и введённого пользователем
         /// </summary>
-        private void SetCode(object sender, KeyEventArgs e)
-        {
-            // Если текст введёный в поле 6 символов
-            if (TbCode.Text.Length == 6)
-                // Вызываем метод проверки кода
-                SetCode();
-        }
+        
 
         /// <summary>
         /// метода проверки отправленного кода на почту и введённого пользователем
@@ -140,6 +134,14 @@ namespace RegIN_Kurlishuk.Pages
         private void OpenLogin(object sender, MouseButtonEventArgs e)
         {
             MainWindow.mainWindow.OpenPage(new Login());
+        }
+
+        private void SetCode(object sender, RoutedEventArgs e)
+        {
+            // Если текст введёный в поле 6 символов
+            if (TbCode.Text.Length == 6)
+                // Вызываем метод проверки кода
+                SetCode();
         }
     }
 }

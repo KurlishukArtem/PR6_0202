@@ -86,17 +86,17 @@ namespace RegIN_Kurlishuk.Pages
                         EndAnimation.Duration = TimeSpan.FromSeconds(1.2);
                         // Запускаем анимацию плавной смены на изображении
                         IUser.BeginAnimation(Image.OpacityProperty, EndAnimation);
-                        // Запускаем анимацию плавной смены на изображении
-                        IUser.BeginAnimation(Image.OpacityProperty, StartAnimation);
                     };
+                    // Запускаем анимацию плавной смены на изображении
+                    IUser.BeginAnimation(Image.OpacityProperty, StartAnimation);
                 }
                 catch (Exception exp)
                 {
                     // Если возникла ошибка, выводим в дебаг
                     Debug.WriteLine(exp.Message);
+                };
                     // Запоминаем введёный логин
                     OldLogin = TbLogin.Text;
-                };
                 
             }
         }
@@ -151,8 +151,6 @@ namespace RegIN_Kurlishuk.Pages
             IsCapture = true;
         }
 
-
-
         /// <summary>
         /// Ввод пароля
         /// </summary>
@@ -195,8 +193,6 @@ namespace RegIN_Kurlishuk.Pages
                         }
                         else
                         {
-                            
-                            
                             // Если попытки ввода пароля закончились
                             // Создаём поток
                             Thread TBlockAutorization = new Thread(BlockAutorization);
@@ -233,7 +229,7 @@ namespace RegIN_Kurlishuk.Pages
                 Capture.IsEnabled = false;
             });
             
-            // Запускаем цикл в 180 шагов| 180/60 = 3 минуты
+            // Запускаем цикл в 180 шагов 180/60 = 3 минуты
             for (int i = 0; i < 180; i++)
             {
                 // получаем оставшееся время
@@ -253,11 +249,11 @@ namespace RegIN_Kurlishuk.Pages
                 // Вне потока
                 Dispatcher.Invoke(() =>
                 {
-                });
                 // Выводим время до разблокировки, цвет карсный
                 SetNotification($"Reauthorization available in: {s_minutes}:{s_seconds}", Brushes.Red);
                 // Ждём 1 секунду
                 Thread.Sleep(1000);
+                });
             }
             
             Dispatcher.Invoke(() =>
@@ -282,22 +278,8 @@ namespace RegIN_Kurlishuk.Pages
         }
 
 
-        /// <summary>
-        /// Ввод логина пользователя
-        /// </summary>
-        private void SetLogin(object sender, KeyEventArgs e)
-        {
-            // При нажатии на кнопку Enter
-            if (e.Key == Key.Enter)
-            {
-                // Вызываем метод получения данных пользователя по логину
-                MainWindow.mainWindow.UserLogIn.GetUserLogin(TbLogin.Text);
-                // Если пароль пользователя введён
-                if (TbPassword.Password.Length > 0)
-                    // Вызываем метод ввода пароля
-                    SetPassword();
-            }
-        }
+        
+        
         
 
         /// <summary>
@@ -324,5 +306,27 @@ namespace RegIN_Kurlishuk.Pages
         /// </summary>
         private void OpenRegin(object sender, MouseButtonEventArgs e) =>
         MainWindow.mainWindow.OpenPage(new Regin());
+
+        /// <summary>
+        /// Ввод логина пользователя
+        /// </summary>
+        private void SetLogin(object sender, KeyEventArgs e)
+        {
+            // При нажатии на кнопку Enter
+            if (e.Key == Key.Enter)
+            {
+                // Вызываем метод получения данных пользователя по логину
+                MainWindow.mainWindow.UserLogIn.GetUserLogin(TbLogin.Text);
+                // Если пароль пользователя введён
+                if (TbPassword.Password.Length > 0)
+                    // Вызываем метод ввода пароля
+                    SetPassword();
+            }
+        }
+
+        private void SetLogin(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

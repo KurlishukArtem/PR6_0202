@@ -82,7 +82,7 @@ namespace RegIN_Kurlishuk.Elements
             //инициализируем рандом
             Random ThisRandom = new Random();
             //Запускаем цикл от 0 до 100
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 4; i++)
             {
                 int back = ThisRandom.Next(0, 10);
                 //Инициализируем нвоый элемент типа Label

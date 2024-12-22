@@ -19,6 +19,7 @@ using System.Windows.Shapes;
 using Microsoft.Win32;
 using Mysqlx;
 using Slack.Webhooks.Action;
+using Imaging = Aspose.Imaging;
 
 namespace RegIN_Kurlishuk.Pages
 {
@@ -96,10 +97,10 @@ namespace RegIN_Kurlishuk.Pages
         /// <summary>
         /// Метод ввода логина
         /// </summary>
-        public void setLogin()
+        public void SetLogin()
         {
             // Регулярное выражение для почты
-            Regex regex = new Regex(@" ([a-zA-Z0-9._-]{4,}@[a-zA-Z0-9._-]{2,}\.[a-zA-Z0-9_-]{2,})");
+            Regex regex = new Regex(@"([a-zA-Z0-9._-]{4,}@[a-zA-Z0-9._-]{2,}\.[a-zA-Z0-9_-]{2,})");
             // Ввелён ли логин зависит от того регулярного выражения
             BCorrectLogin = regex.IsMatch(TbLogin.Text);
             // Если регулярное вырожение
@@ -108,7 +109,7 @@ namespace RegIN_Kurlishuk.Pages
                 // Выводим пустое уведомление чёрным цветом
                 SetNotification("", Brushes.Black);
                 // Вызываем получение данных пользователя по логину
-                MainWindow.mainWindow.UserLogIn.GetUserLogin(TbLogin.Text);
+               MainWindow.mainWindow.UserLogIn.GetUserLogin(TbLogin.Text);
             }
             else
                 // Если введён логин не усдовлетворяющий регулярное вырожение, выводим сообщение красным цветом
@@ -141,7 +142,7 @@ namespace RegIN_Kurlishuk.Pages
         public void SetPassword()
         {
             // Регулярное выражение
-            Regex regex = new Regex(@" (?=.*[0-9])(?=.*[!@#$%^&?*\-_=]) (?=,*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&?*\-_=]{10,}");
+            Regex regex = new Regex(@"(?=.*[0-9])(?=.*[!@#$%^&?*\-_=])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&?*\-_=]{10,}");
             // (?=.*[0 - 9]) строка содержит хотя бы одно число;
             //(?=.*[!@#$%^&?*\-_=]) - строка содержит хотя бы один спецсимвол;
             //(?=.*[a - z]) строка содержит хотя бы одну латинскую букву в нижнем регистре;
@@ -209,7 +210,13 @@ namespace RegIN_Kurlishuk.Pages
         }
         #endregion
 
-
+        public void SetNotification(string Message, SolidColorBrush _color)
+        {
+            // Для текстового поля указываем текст
+            LNameUser.Content = Message;
+            // Для текстового поля указываем цвет
+            LNameUser.Foreground = _color;
+        }
         /// <summary>
         /// Метод регистрации
         /// </summary>
@@ -274,7 +281,7 @@ namespace RegIN_Kurlishuk.Pages
                 using (Imaging.Image image = Imaging.Image.Load(FileDialogImage.FileName))
                 {
                     // проверяем какая из сторон больше
-                    if (image.width > image.Height)
+                    if (image.Width > image.Height)
                     {
                         // Расчитываем новую ширину относительно высоты
                         NewWidth = (int)(image.Width * (256f / image.Height));

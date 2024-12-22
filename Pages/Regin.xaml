@@ -4,15 +4,16 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:RegIN_Kurlishuk.Pages"
-      mc:Ignorable="d" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     TextElement.FontWeight="Regular"
     TextElement.FontSize="13"
     TextOptions.TextFormattingMode="Ideal"
     TextOptions.TextRenderingMode="Auto"
     Background="{DynamicResource MaterialDesignPaper}"
-    FontFamily="{DynamicResource MaterialDesign Font}"
-    xmlns:uc="clr-namespace: RegIN_Kurlishuk.Elements"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    xmlns:uc="clr-namespace:RegIN_Kurlishuk.Elements"
     d:DesignHeight="450"
     d:DesignWidth="800"
       Title="Regin">
@@ -30,7 +31,7 @@
                     Margin="32"
                     VerticalAlignment="Top"
                     Width="100"
-                    Source="/RegIN; component/Images/ic-user.png"
+                    Source="/Images/ic-user.png"
                     MouseDown="SelectImage">        
                     <Image.Clip>
                         <EllipseGeometry
@@ -69,7 +70,8 @@
                         Height="23"
                         VerticalAlignment="Top"
                         x:Name="TbName"
-                        PreviewTextInput="SetName"/>
+                        PreviewTextInput="SetName"
+                        Margin="10,235,10,0"/>
                     <Label
                             Content="Enter password:"
                             Margin="10,265,10,0"

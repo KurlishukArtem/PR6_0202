@@ -10,7 +10,7 @@ namespace RegIN_Kurlishuk.Classes
 {
     public class WorkingDB
     {
-        readonly static string connection = "server=localhost;port=3307;database=regin;user=root;pwd=root;";
+        readonly static string connection = "server=localhost;port=3307;database=regin;user=root;pwd=;";
         //создание и открытие подключения
         public static MySqlConnection OpenConnection()
         {
@@ -19,7 +19,6 @@ namespace RegIN_Kurlishuk.Classes
                 MySqlConnection mySqlConnection = new MySqlConnection(connection);
                 mySqlConnection.Open();
                 return mySqlConnection;
-
             }
             catch (Exception ex) 
             {

@@ -204,8 +204,8 @@ namespace RegIN_Kurlishuk.Pages
                         EndAnimation.Duration = TimeSpan.FromSeconds(1.2);
                         // Запускаем анимацию плавной смены на изображении
                         IUser.BeginAnimation(OpacityProperty, EndAnimation);
-                        // Запускаем анимацию плавной смены на изображении
                     };
+                    // Запускаем анимацию плавной смены на изображении
                     IUser.BeginAnimation(OpacityProperty, StartAnimation);
                     // Выводим сообщение о том что новый пароль будет отправлен на почту
                     SetNotification("An email has been sent to your email.", Brushes.Black);
@@ -213,6 +213,13 @@ namespace RegIN_Kurlishuk.Pages
                     MainWindow.mainWindow.UserLogIn.CreateNewPassword();
                 }
             }
+        }
+        public void SetNotification(string Message, SolidColorBrush _color)
+        {
+            // Для текстового поля указываем текст
+            LNameUser.Content = Message;
+            // Для текстового поля указываем цвет
+            LNameUser.Foreground = _color;
         }
         private void OpenLogin(object sender, MouseButtonEventArgs e)
         {

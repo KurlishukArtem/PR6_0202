@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:RegIN_Kurlishuk.Elements"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="280">
@@ -16,10 +17,10 @@
         <TextBox
             x:Name="InputCapture"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center"
+            VerticalAlignment="Top"
             Height="25"
             VerticalContentAlignment="Top"
             Margin="0,75,0,0"
-            KeyUp="EnterCapture"/>
+            KeyUp="EnterCapture" Width="152"/>
     </Grid>
 </UserControl>

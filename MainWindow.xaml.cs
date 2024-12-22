@@ -43,12 +43,9 @@ namespace RegIN_Kurlishuk
                 EndAnimation.From = 0;
                 EndAnimation.To = 1;
                 EndAnimation.Duration = TimeSpan.FromSeconds(1.2);
-                frame.BeginAnimation(Frame.OpacityMaskProperty, StartAnimation);
-
+                frame.BeginAnimation(Frame.OpacityProperty, EndAnimation);
             };
-            frame.BeginAnimation(Frame.OpacityMaskProperty, StartAnimation);
-
+            frame.BeginAnimation(Frame.OpacityProperty, StartAnimation);
         }
-
     }
 }

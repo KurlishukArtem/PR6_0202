@@ -89,7 +89,7 @@
                     Margin="0,373,10,0"
                     VerticalAlignment="Top"
                     Foreground="#FF673AB7"
-                                        FontSize="10"
+                    FontSize="10"
                     MouseDown="OpenRegin"
                     HorizontalAlignment="Right"
                     Width="62"/>        

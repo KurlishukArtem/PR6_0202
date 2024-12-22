@@ -14,16 +14,16 @@ namespace RegIN_Kurlishuk.Classes
         public static void SendMessage(string Message, string To)
         {
             //Создаем SMTP клиент, в качестве хоста указываем яндекс
-            var smtpClient = new SmtpClient("smtp.ysndex.ru") {
+            var smtpClient = new SmtpClient("smtp.yandex.ru") {
                 //указываем порт по которому передаем сообщение
                 Port = 587,
                 //указываем почту, с которой будет отправляться сообщение и пароль от этой почты
-                Credentials = new NetworkCredential("yandex@yandex.ru", "password"),
+                Credentials = new NetworkCredential("ya.erro2018@yandex.ru", "coogwxvpawzmlqgx"),
                 // Включаем поддержку SSL
                 EnableSsl = true,
             };
             // Вызываем метод send, который отправляет письмо на указанный адресс
-            smtpClient.Send("landaxer@yandex.ru", To, "Проект Regin", Message); // oqupptnofvmuyjkp
+            smtpClient.Send("ya.erro2018@yandex.ru", To, "Проект Regin", Message); // oqupptnofvmuyjkp
 
         }
     }

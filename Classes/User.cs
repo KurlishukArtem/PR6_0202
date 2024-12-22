@@ -43,7 +43,8 @@ namespace RegIN_Kurlishuk.Classes
                     userQuery.Read();
                     this.Id = userQuery.GetInt32(0);
                     this.Login = userQuery.GetString(1);
-                    this.Name = userQuery.GetString(2);
+                    this.Password = userQuery.GetString(2);
+                    this.Name = userQuery.GetString(3);
                     if (!userQuery.IsDBNull(4))
                     {
                         this.Image = new byte[64 * 1024];
@@ -61,9 +62,9 @@ namespace RegIN_Kurlishuk.Classes
             {
                 //если соединение открыть не удается, вызываем событие провальной авторизации
                 HandlerInCorrectLogin.Invoke();
-                //закрываем соединение с БД
-                WorkingDB.CloseConnection(myConnection);
             }
+            //закрываем соединение с БД
+            WorkingDB.CloseConnection(myConnection);
         }   
         ///<summary>
         /// Функция сохранения польователя
