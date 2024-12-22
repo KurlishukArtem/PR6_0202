@@ -83,7 +83,7 @@ namespace RegIN_Kurlishuk.Pages
             }
             Dispatcher.Invoke(() =>
             {
-                // Включаем кнопку отправить повторно
+                // Включаем кнопку отправить повторно 
                 BSendMessage.IsEnabled = true;
                 // Изменяем данные на текстовом поле
                 LTimer.Content = "";
