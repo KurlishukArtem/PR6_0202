@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,10 +12,12 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using RegIN_Kurlishuk.Classes;
+using Slack.Webhooks.Elements;
 
 namespace RegIN_Kurlishuk.Pages
 {
@@ -48,7 +53,7 @@ namespace RegIN_Kurlishuk.Pages
                     BitmapImage bilmg = new BitmapImage();
                     // Открываем поток, хранилищем которого является память и указываем в качестве источника масси
 
-                    Memorystream ms = new MemoryStream(MainWindow.mainWindow.UserLogIn.Image);
+                    MemoryStream ms = new MemoryStream(MainWindow.mainWindow.UserLogIn.Image);
                     // Сиганлизируем о начале инициализации
                     bilmg.BeginInit();
                     // Указываем источник потока
@@ -68,29 +73,30 @@ namespace RegIN_Kurlishuk.Pages
                     // Присваиваем событие при конце анимации
                     StartAnimation.Completed += delegate
                     {
+                        // Устанавливаем изображение
+                        IUser.Source = imgsrc;
+                        // Создаём анимацию конца
+                        DoubleAnimation EndAnimation = new DoubleAnimation();
+                        // Указываем значение от которого она выполняется
+                        EndAnimation.From = 0;
+                        // Указываем значение до которого она выполняется
+                        EndAnimation.To = 1;
+                        // Указываем продолжительность выполнения
+                        EndAnimation.Duration = TimeSpan.FromSeconds(1.2);
+                        // Запускаем анимацию плавной смены на изображении
+                        IUser.BeginAnimation(Image.OpacityProperty, EndAnimation);
+                        // Запускаем анимацию плавной смены на изображении
+                        IUser.BeginAnimation(Image.OpacityProperty, StartAnimation);
                     };
-                    // Устанавливаем изображение
-                    IUser.Source = imgsrc;
-                    // Создаём анимацию конца
-                    DoubleAnimation EndAnimation = new DoubleAnimation();
-                    // Указываем значение от которого она выполняется
-                    EndAnimation.From = 0;
-                    // Указываем значение до которого она выполняется
-                    EndAnimation.То = 1;
-                    // Указываем продолжительность выполнения
-                    EndAnimation.Duration = TimeSpan.FromSeconds(1.2);
-                    // Запускаем анимацию плавной смены на изображении
-                    IUser.BeginAnimation(Image.OpacityProperty, EndAnimation);
-                    // Запускаем анимацию плавной смены на изображении
-                    IUser.BeginAnimation(Image.OpacityProperty, StartAnimation);
                 }
                 catch (Exception exp)
                 {
+                    // Если возникла ошибка, выводим в дебаг
+                    Debug.WriteLine(exp.Message);
+                    // Запоминаем введёный логин
+                    OldLogin = TbLogin.Text;
                 };
-                // Если возникла ошибка, выводим в дебаг
-                Debug.WriteLine(exp.Message);
-                // Запоминаем введёный логин
-                OldLogin = TbLogin.Text;
+                
             }
         }
 
@@ -152,7 +158,7 @@ namespace RegIN_Kurlishuk.Pages
         private void SetPassword(object sender, KeyEventArgs e)
         {
             // Если пользователь нажал клавишу Enter
-            if (e.key == Key.Enter)
+            if (e.Key == Key.Enter)
                 // Вызываем метод ввода пароля
                 SetPassword();
         }
@@ -179,12 +185,12 @@ namespace RegIN_Kurlishuk.Pages
                     {
                         // Если пароль не совпадает с загруженным пользователем
                         
-                        if (CountsetPassword > 0)
+                        if (CountSetPassword > 0)
                         {
                             // Выводим предупреждение, сколько попыток осталось, цвет = красный
-                            SetNotification($"Password is incorrect, {CountsetPassword} attempts left", Brushes.Red);
+                            SetNotification($"Password is incorrect, {CountSetPassword} attempts left", Brushes.Red);
                             // Вычитаем попытку ввода пароля
-                            CountsetPassword--;
+                            CountSetPassword--;
                         }
                         else
                         {
@@ -238,7 +244,7 @@ namespace RegIN_Kurlishuk.Pages
                     // Добавляем в
                     s_minutes = "0" + TimeIdle.Minutes;
                 // Получаем секунды
-                strings_seconds = TimeIdle.Seconds.ToString();
+                string s_seconds = TimeIdle.Seconds.ToString();
                 // Если секунды меньше 10
                 if (TimeIdle.Seconds < 10)
                     // Добавляем 0
@@ -309,13 +315,13 @@ namespace RegIN_Kurlishuk.Pages
         /// Метод уведомлений пользователя
         /// </summary>
         /// <param name="Message">Сообщение которое необходимо вывесте</param>
-        /// <param name="_Color">Цвет сообщения </раrаm>
-        public void setNotification(string Message, SolidColorBrush _color)
+        /// <param name="_color">Цвет сообщения </раrаm>
+        public void SetNotification(string Message, SolidColorBrush _color)
         {
             // Для текстового поля указываем текст
             LNameUser.Content = Message;
             // Для текстового поля указываем цвет
-            LNameUser.Foreground = _Color;
+            LNameUser.Foreground = _color;
         }
 
 
@@ -328,6 +334,6 @@ namespace RegIN_Kurlishuk.Pages
         /// Метод открытия страницы регистрации
         /// </summary>
         private void OpenRegin(object sender, MouseButtonEventArgs e) =>
-        MainWindow.mainWindow.OpenPage(new Regin());
+        MainWindow.mainWindow.OpenPage(new Regex());
     }
 }
